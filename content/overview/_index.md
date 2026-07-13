@@ -15,13 +15,15 @@ toc: false
 # DIY MIDI Metronome
 
 Welcome to the build log for a small, standalone MIDI metronome — an ESP32/ESP32-S3 based
-device that receives MIDI Timing Clock and drives an LED (and eventually multiple linked
-devices) at the detected tempo.
+device that receives MIDI Timing Clock and drives a WS2811/WS2812 LED strip to mimic the
+swinging arm of a mechanical pendulum metronome, in sync with the detected tempo.
 
 ## What it does
 
 - Receives MIDI Timing Clock (24 ticks per beat) over a real 5-pin DIN MIDI connection or
-  USB-MIDI class-compliant, and blinks an LED at the detected tempo.
+  USB-MIDI class-compliant, and sweeps a lit position back and forth across an LED strip —
+  tick sweeps left→right, tock sweeps right→left — the same visual cue as a real mechanical
+  pendulum metronome, not just a blinking light.
 - Runs on two firmware variants: a generic ESP32 build using a shared UART-COBS message
   transport, and an ESP32-S3 build speaking native USB-MIDI to a DAW or host directly.
 - Supports **cascading sync over Bluetooth Low Energy** — one device advertises as a
