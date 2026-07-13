@@ -4,7 +4,7 @@
         {{- partial "head/head.html" . -}}
         {{- block "head" . -}}{{ end }}
 
-        <link rel="stylesheet" href="/css/accordion.css">
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/accordion.css">
     </head>
 
     <body class="{{ block `body-class` . }}{{ end }}">
