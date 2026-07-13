@@ -3,6 +3,11 @@ baseurl = "https://jens-goes-mad.github.io/DIY-MIDI-METRONOME.public/"
 languageCode = "en-us"
 title = "Jens goes mad"
 
+# Site is served from a subpath (GitHub Pages project page), so root-relative
+# links written in content (e.g. "[Hardware](/hardware)") need the subpath
+# stitched in at build time.
+canonifyURLs = true
+
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
 defaultContentLanguage = "en"
