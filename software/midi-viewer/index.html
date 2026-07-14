@@ -6,16 +6,33 @@
   <title>MIDI Viewer</title>
   <link rel="stylesheet" href="midi-monitor.css" />
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
+    }
+    body {
       padding: 1.5rem;
       background: #12151d;
       color: #dfe3ea;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      box-sizing: border-box;
+      display: flex;
+      overflow: hidden;
     }
+    /* Height/flex chain down to #midiMonitor so its .mm-log (midi-monitor.css)
+       can actually flex-grow into the available space instead of collapsing
+       to its min-height -- only .mm-log itself scrolls (overflow-y: auto). */
     .wrap {
       max-width: 900px;
+      width: 100%;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    #midiMonitor {
+      flex: 1 1 auto;
+      min-height: 0;
     }
     h1 {
       font-size: 1.3rem;
@@ -40,6 +57,18 @@
       border-radius: 4px;
       padding: 0.35rem 0.5rem;
     }
+    button#refreshBtn {
+      font: inherit;
+      color: #dfe3ea;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 0.35rem 0.75rem;
+      cursor: pointer;
+    }
+    button#refreshBtn:hover {
+      border-color: #5ec8f8;
+    }
     #status {
       font-size: 0.85rem;
       color: #8b93a7;
@@ -50,14 +79,14 @@
   <div class="wrap">
     <h1>MIDI Viewer</h1>
     <p class="lede">
-      A standalone, dependency-free live MIDI input monitor -- runs entirely in your browser via
-      the Web MIDI API, no install required. Part of the
+      A standalone, dependency-free live MIDI input monitor. Part of the
       <a href="https://github.com/jens-goes-mad/diy-midi-metronome" style="color:#5ec8f8">DIY MIDI Metronome</a>
       project's desktop editor tooling.
     </p>
 
     <div class="controls">
       <select id="inputSelect"></select>
+      <button id="refreshBtn" type="button">Refresh</button>
       <span id="status"></span>
     </div>
 
@@ -66,5 +95,6 @@
 
   <script src="midi-monitor.js"></script>
   <script src="web-midi-bridge.js"></script>
+  <script src="viewer-glue.js"></script>
 </body>
 </html>

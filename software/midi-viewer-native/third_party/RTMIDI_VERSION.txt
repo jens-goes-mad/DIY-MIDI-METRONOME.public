@@ -1,0 +1,2 @@
+a3233c22949342f6697681e2cf2403e27fcf0c9e (2025-11-27)
+Vendored from https://github.com/thestk/rtmidi, RtMidi.h + RtMidi.cpp only, MIT-style license.
