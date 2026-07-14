@@ -40,15 +40,22 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Resolve Hugo modules
+        working-directory: documentation-github-page
         run: hugo mod tidy
 
       - name: Build
+        working-directory: documentation-github-page
         run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Add MIDI Viewer demo to site output
+        run: |
+          mkdir -p documentation-github-page/public/software/midi-viewer
+          cp -r software/midi-viewer/. documentation-github-page/public/software/midi-viewer/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./documentation-github-page/public
 
   deploy:
     environment:

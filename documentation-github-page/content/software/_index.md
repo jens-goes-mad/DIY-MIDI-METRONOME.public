@@ -21,8 +21,8 @@ section:
   devices stay in sync without any wired connection.
 - **SENDER / RECEIVER role detection** — how a device figures out its role and joins a
   shared group ID, plus the onboard status LED behavior that reflects it.
-- **MIDI Monitor** — a dedicated, filterable desktop tool for inspecting live MIDI traffic
-  while developing and debugging the firmware.
+- [**MIDI Monitor**](/software/midi-monitor) — a dedicated, filterable tool for inspecting
+  live MIDI traffic while developing and debugging the firmware, with a live browser demo.
 
 ---
 

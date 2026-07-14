@@ -1,26 +1,11 @@
 # DIY-MIDI-METRONOME.public
 
-Public build-log site for the [DIY-MIDI-METRONOME](https://github.com/jens-goes-mad/diy-midi-metronome)
-project — a cascading, BLE-synced MIDI metronome. Built with [Hugo](https://gohugo.io/) and the
-[Stack theme](https://github.com/CaiJimmy/hugo-theme-stack), deployed to GitHub Pages via
-`.github/workflows/hugo.yml` on every push to `main`.
+Public-facing content for the [DIY-MIDI-METRONOME](https://github.com/jens-goes-mad/diy-midi-metronome)
+project — a cascading, BLE-synced MIDI metronome. This repo holds two independent things,
+both deployed together to the one GitHub Pages site via `.github/workflows/hugo.yml`:
 
-## Local development
-
-Hugo (extended) and Go are required to build this site; both are pinned into the bundled
-Docker image, so no local install is needed:
-
-```bash
-docker compose up
-```
-
-Then open http://localhost:1313. Content lives under `content/`; the theme config is under
-`config/_default/`.
-
-## Structure
-
-- `content/overview` — project intro
-- `content/hardware` — circuit/reference design notes
-- `content/software` — firmware and tooling notes (cascading BLE sync, MIDI Monitor)
-- `content/timeline` — build log
-- `content/me` — author bio + legal notice (Impressum/Datenschutzerklärung)
+- [`documentation-github-page/`](documentation-github-page) — the Hugo (Stack theme) build-log
+  site: project overview, hardware reference design, firmware/tooling notes, build timeline.
+- [`software/midi-viewer/`](software/midi-viewer) — a standalone, dependency-free MIDI Monitor
+  you can run straight in a browser via the Web MIDI API, no build step required. Served at
+  `/software/midi-viewer/` on the deployed site.

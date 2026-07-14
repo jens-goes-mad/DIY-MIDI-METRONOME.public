@@ -1,0 +1,132 @@
+/* Manual copy from the private DIY-MIDI-METRONOME repo's
+   EDITOR/frontend/components/midi-monitor.css -- port fixes there by hand. */
+
+/* Self-contained styling for MidiMonitor -- no Bootstrap/framework classes
+   used in the component's own generated markup (see midi-monitor.js), so
+   this file is the only styling dependency. Dark by default to match this
+   project's theme; override the custom properties below to reuse
+   elsewhere (e.g. a light-themed host app). */
+
+.mm {
+  --mm-bg: #1b1f2a;
+  --mm-border: rgba(255, 255, 255, 0.08);
+  --mm-text: #dfe3ea;
+  --mm-muted: #8b93a7;
+  --mm-accent: #5ec8f8;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+.mm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.mm-header:empty {
+  display: none;
+}
+
+.mm-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--mm-text);
+}
+
+.mm-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.3rem 1.1rem;
+  font-size: 0.7rem;
+  color: var(--mm-muted);
+}
+
+.mm-filter-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mm-filters label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.mm-filters input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.mm-buttons {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
+.mm-pause-btn,
+.mm-clear-btn {
+  font: inherit;
+  font-size: 0.7rem;
+  color: var(--mm-muted);
+  background: transparent;
+  border: 1px solid var(--mm-border);
+  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  cursor: pointer;
+}
+
+.mm-pause-btn:hover,
+.mm-clear-btn:hover {
+  color: var(--mm-text);
+  border-color: var(--mm-accent);
+}
+
+.mm-pause-btn--active {
+  color: var(--mm-bg);
+  background: var(--mm-accent);
+  border-color: var(--mm-accent);
+}
+
+.mm-log {
+  flex-grow: 1;
+  font-size: 0.8rem;
+  color: var(--mm-text);
+  background: var(--mm-bg);
+  border: 1px solid var(--mm-border);
+  border-radius: 4px;
+  padding: 0.5rem;
+  overflow-y: auto;
+  min-height: 160px;
+}
+
+.mm-event {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+/* One rule per category -- toggled by MidiMonitor adding/removing
+   mm-hide-<category> on .mm-log itself, so filtering is pure CSS with no
+   re-render needed (unchecking a filter hides matching past events too,
+   not just future ones). */
+.mm-log.mm-hide-noteOn .mm-cat-noteOn,
+.mm-log.mm-hide-noteOff .mm-cat-noteOff,
+.mm-log.mm-hide-cc .mm-cat-cc,
+.mm-log.mm-hide-programChange .mm-cat-programChange,
+.mm-log.mm-hide-pitchBend .mm-cat-pitchBend,
+.mm-log.mm-hide-aftertouch .mm-cat-aftertouch,
+.mm-log.mm-hide-system .mm-cat-system,
+.mm-log.mm-hide-systemTick .mm-cat-systemTick,
+.mm-log.mm-hide-sysex .mm-cat-sysex {
+  display: none;
+}

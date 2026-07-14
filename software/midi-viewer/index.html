@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MIDI Viewer</title>
+  <link rel="stylesheet" href="midi-monitor.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 1.5rem;
+      background: #12151d;
+      color: #dfe3ea;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 1.3rem;
+      margin: 0 0 0.25rem;
+    }
+    p.lede {
+      color: #8b93a7;
+      margin: 0 0 1.25rem;
+      font-size: 0.9rem;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    select {
+      font: inherit;
+      background: #1b1f2a;
+      color: #dfe3ea;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 0.35rem 0.5rem;
+    }
+    #status {
+      font-size: 0.85rem;
+      color: #8b93a7;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>MIDI Viewer</h1>
+    <p class="lede">
+      A standalone, dependency-free live MIDI input monitor -- runs entirely in your browser via
+      the Web MIDI API, no install required. Part of the
+      <a href="https://github.com/jens-goes-mad/diy-midi-metronome" style="color:#5ec8f8">DIY MIDI Metronome</a>
+      project's desktop editor tooling.
+    </p>
+
+    <div class="controls">
+      <select id="inputSelect"></select>
+      <span id="status"></span>
+    </div>
+
+    <div id="midiMonitor"></div>
+  </div>
+
+  <script src="midi-monitor.js"></script>
+  <script src="web-midi-bridge.js"></script>
+</body>
+</html>
