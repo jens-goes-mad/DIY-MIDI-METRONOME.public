@@ -36,8 +36,13 @@ swinging arm of a mechanical pendulum metronome, in sync with the detected tempo
 
 Most affordable metronomes are either a phone app or a simple click box — neither is built
 to sit inside a real MIDI rig, sync tempo across a room of devices without cabling, or give
-you visibility into what's actually being clocked. This project is the hardware/firmware
-side of scratching that itch.
+you visibility into what's actually being clocked or understand program changes. Even worse 
+when dealing with several (build in) metronomes they are always out of sync causing literally 
+mud by unsynchronized effects like delays on keys and git due to same tempo, but different starting times.
+
+This project is the hardware/firmware side of scratching that itch,<br>
+for fun,<br>
+thus: [jens-goes-mad](/me).
 
 ## Where to look next
 

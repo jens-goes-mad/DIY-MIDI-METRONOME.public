@@ -12,8 +12,7 @@ menu:
 comments: false
 toc: true
 ---
-Welcome to my blog — a behind-the-scenes journey into the development of both hardware and software for a modern pedal
-board.
+Welcome to my blog — a behind-the-scenes journey into the development of both hardware and cross-platform / cross-architecture software for a modern DIY-MIDI-METRONOME.
 
 ## About me (past)
 
@@ -31,14 +30,14 @@ linking two machines with Token Ring networks, and wrestling daily with matrix p
 
 In `1997`, I worked on digitizing the Frankfurt Book Fair, building a cross-platform UI for Mac and PC long before Java 
 was viable for real production. That led to my first encounter with cross-compiled C++, XVT/XVTDSC, 
-and using a compact, blazing-fast read-only database build by my college — years before Elasticsearch existed.
+and using a compact, blazing-fast read-only database built by my colleague — years before Elasticsearch existed.
 
 `1999` At Deutsche Bahn, I helped tackle the wildly complex problem of optimal group seating on trains.
-- with EJBs on a quad core server! And VisualAge, a tool ahead of it's time until IBM screwed it.
+- with EJBs on a quad core server! And VisualAge, a tool ahead of its time until IBM screwed it.
 
 Then came the-object-company, where we developed autonomous warrant trading systems for Dresdner Bank in `2001`, 
 with blinking real-time Swing UIs on top of JMS, BEA WebLogic, and EJBs (yes, those EJBs).
-- we created connection to ORC, EURONEXT, XETRA/TradeLink
+- we created connections to ORC, EURONEXT, XETRA/TradeLink
 - used all the Java "O"s: OOA, OOD, OOP
 - Fought Nightmares like SimpleDateFormat not being thread-safe
 - Server and Clientside development
@@ -46,7 +45,7 @@ with blinking real-time Swing UIs on top of JMS, BEA WebLogic, and EJBs (yes, th
 In `2003`, I joined one of the largest projects of my career — building multi-channel banking architectures for Postbank
 spanning internal UIs, call-center tools, public websites, and huge middleware systems for credit cards, 
 loans, and external credit checks (Schufa, InFoScore - sigh).
-Overall we build hugh service layers to combine shadow databases and SAP and introduced configurable process engines 
+Overall we built huge service layers to combine shadow databases and SAP and introduced configurable process engines 
 all in 
 - JAVA, EJBs
 - some Cobol, BTX
@@ -57,9 +56,9 @@ automating UI generation from hundreds of database tables to display and edit 1:
 - JAVA, Swing, JMS, WebStart(!), JBoss
 - Summit
 
-Mid of `2007` I left the finance area and jumped into the startup scene, working with old friends (and new time zones) 
+Mid-`2007` I left the finance area and jumped into the startup scene, working with old friends (and new time zones) 
 from New Zealand and the Australian outback, long before “remote-first” was a buzzword.
-Time drift was horrible, but I loved it and got in touch with people I closely worked together over years, remote 
+Time drift was horrible, but I loved it, and I stayed closely connected over the years with people working remotely 
 while they travelled through the outback of Australia, laptop on their knees. That was considerably "hard core remote".
 We jumped on the first stable libraries and frameworks like:
 - Maven
@@ -68,16 +67,16 @@ We jumped on the first stable libraries and frameworks like:
 - Hibernate, PostgresSql
 - iReport
 
-In parallel around `2008`, the shopping clubs sprout like mushrooms from the ground, so did Brands4Friends.
-Due to the nature of their marketing, campaign driven model, their servers in canada crashed regularly when they sold
-some Gucci Article at 50% discount. At that time the first version of an high-performance Terracotta driven shop  
-cluster was up and running after 3 month, written by 3 developers, no more overselling, no more crashed. 
-I was responsible for the entire architecture / development of the shop and later integration in the inventory 
-management and payment system.
-- Wirecard (sigh) for creditcard handling, staged 3d-secure
+In parallel around `2008`, the shopping clubs sprouted like mushrooms from the ground, so did Brands4Friends.
+Due to the nature of their marketing, campaign-driven model, their servers in Canada crashed regularly when they sold
+some Gucci article at 50% discount. At that time the first version of a high-performance Terracotta-driven shop  
+cluster was up and running after 3 months, written by 3 developers, no more overselling, no more crashes. 
+I was responsible for the entire architecture / development of the shop and later integration into the inventory 
+management and payment systems.
+- Wirecard (sigh) for credit card handling, staged 3D-Secure
 - Microsoft Navision Backend. 
 - Connections to AWS S3 / EC2 
-- c#/.net Bridge to Navision
+- C#/.NET Bridge to Navision
 - Terracotta, JMS-via-Terracotta
 - Maven, Tapestry 5, Spring, Hibernate, HSQL, MySQL 
 - Testframework, Quartz, JMeter, Hyperic, Rest API
@@ -104,23 +103,24 @@ I also had the great opportunity to work side-by-side with teammates in Switzerl
 but on-site in their offices. Those face-to-face collaborations were deeply rewarding and gave me invaluable insights 
 into local work cultures, team dynamics, and what truly makes a global project tick.
 
-Unfortunately, the nature of Jouney's is they end. Hard.
+Unfortunately, the nature of journeys is that they end. Hard.
 Which brought me back into the financial field.
 
 Around `2011`, I re-entered finance with Deutsche Bank, working on massive credit risk systems — the kind that needed 100+ 
 physical servers back then, which you'd spin up on EKS today. Tools like Hazelcast and MongoDB entered the mix 
-(honestly, which I don’t love, but know them well enough, though).
+(honestly, not my favorites, but I know them well enough).
 
-And in `2014` it started like it began. In 2014, I joined gd-inside, a small, focused team providing regulatory and 
-backend services to financial institutions from Valuation Prices, Arrival Prices or Transaction Cost calculation.
+And in `2014` it started like it began — I joined gd-inside, a small, focused team providing regulatory and 
+backend services to financial institutions, from Valuation Prices, Arrival Prices, and Transaction Cost calculations, 
+to an AI-supported marketing video creation pipeline.
 Till today. And now I love to work in fields like
-- Apache Camel, JavaScript ChartLibs, JDBC driver based on JSONs, Trick JasperReports, Postgres in Kiosk Mode, 
-  MongoDb Audit-trails with Playback and so much more...
+- Apache Camel, JavaScript ChartLibs, JDBC driver based on JSONs, hacking JasperReports internals for custom functions, Postgres in Kiosk Mode, 
+  MongoDB Audit-trails with Playback, Spring, SpringBoot, Advices, AI pipelines and so much more...
 - Java, Python, Dart, C++
-- Docker, Docker, Docker and RestAPIs in R, Python, Java, C++ (don't ask).
-- AI Tools e.g. AWS Textract, AWS NovaLite, ChatGPT API, ChatGPT Agents, Prompts
-- Six Financial, WM, FactSet, TTM0, AVS, Bloomberg
-- Prometheus, Victoria Metrics, PushGateway, Jmx-Batch-Push, Grafana 
+- Docker, Docker, Docker, K3S and REST APIs in R, Python, Java, C++ (don't ask).
+- AI Tools, e.g., AWS Textract, AWS NovaLite, ChatGPT API, ChatGPT Agents, Prompts, Claude Tooling
+- Six Financial, WM, FactSet, TTM0, AVS, Bloomberg, ...
+- Prometheus, Victoria Metrics, PushGateway, JMX-Batch-Push, Grafana 
 
 ![good old times](JB_VCs.jpg)
 
@@ -133,23 +133,21 @@ advocate for microservice architectures to generate PDFs and various types of ch
 from building pipelines for reproducible results to wrestling with ChatGPT agents that answer provider data queries
 in plain language. It’s a blend of engineering discipline and creative chaos, and I love both.
 
-Outside of my day job, I’m building a DIY MIDI Music Workstation Pedal board — a modular,
-touchscreen-powered music controller. It’s a return to embedded systems, electronics, and low-level programming
-mixed with Flutter, C++, Dart, WebSockets, RestAPIs, Docker, and modern component based software architecture.
-A passion project fueled by curiosity, solder smoke, and my AI pair programmer: ChatGPT.
+Outside of my day job, I’m building a DIY-MIDI-METRONOME. It’s my second return to embedded systems, electronics, and low-level programming mixed with C, JavaScript, HTML, Docker, and modern component-based software architecture.
+A passion project fueled by curiosity, solder smoke, and my AI pair programmer: CLAUDE.
 
 ## Music!
 
-Even I am on stage you’ll never spot me. I’m that long-haired, old, slightly scruffy guy hiding in the back.
+Even if I’m on stage, you’ll never spot me. I’m that long-haired, old, slightly scruffy guy hiding in the back.
 The good news? My Kronos is exactly the right height to perfectly hide my belly. Total win. For all of us.
 
 ![see man in the mirror, uhm, circle](JB_EE.jpg)
 
-Sometime you can see parts of me (arm behind a tree, or an eye, some hair)
+Sometimes you can see parts of me (arm behind a tree, or an eye, some hair)
 
 ![Eye of the tiger](WHOB_JB.jpg)
 
-Under rare occasions I can be spotted on images in my entire gorgeousness (for sure, I have to pay for this)
+On rare occasions I can be spotted on images in my entire gorgeousness (for sure, I have to pay for this)
 
 ![100 bucks](IMG_1037.jpeg)
 
