@@ -107,6 +107,18 @@ class MidiMonitor {
     if (this.paused) return;
 
     const category = categorizeMidiBytes(bytes);
+
+    // systemTick (MIDI Clock / MTC Quarter Frame) is high-frequency and
+    // carries no per-message information, hence hidden by default -- while
+    // hidden, it's skipped entirely rather than just CSS-hidden. Otherwise a
+    // sustained clock stream during playback still counts toward maxEvents
+    // below and silently evicts genuinely visible history out of the log
+    // long before the visible list looks anywhere near full. Every other
+    // category keeps the "uncheck now, recheck later reveals past events
+    // too" behavior CSS-only filtering gives us -- this is a deliberate
+    // exception for the one category that's pure noise while hidden.
+    if (category === "systemTick" && this.logEl.classList.contains("mm-hide-systemTick")) return;
+
     const hex = bytes.map((b) => b.toString(16).padStart(2, "0")).join(" ");
 
     const line = document.createElement("div");
