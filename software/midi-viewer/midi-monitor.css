@@ -66,11 +66,37 @@
   cursor: pointer;
 }
 
+.mm-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  margin-left: auto;
+}
+
 .mm-buttons {
   display: flex;
   align-items: flex-start;
   gap: 0.4rem;
-  margin-left: auto;
+}
+
+.mm-maxevents {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  color: var(--mm-muted);
+}
+
+.mm-maxevents select {
+  font: inherit;
+  font-size: 0.7rem;
+  color: var(--mm-text);
+  background: var(--mm-bg);
+  border: 1px solid var(--mm-border);
+  border-radius: 4px;
+  padding: 0.1rem 0.3rem;
+  cursor: pointer;
 }
 
 .mm-pause-btn,

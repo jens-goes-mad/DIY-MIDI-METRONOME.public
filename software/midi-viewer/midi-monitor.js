@@ -196,9 +196,36 @@ class MidiMonitor {
     this.buttonsEl = document.createElement("div");
     this.buttonsEl.className = "mm-buttons";
     this.buttonsEl.append(this.pauseBtn, this.clearBtn);
+
+    this.maxEventsSelect = document.createElement("select");
+    [100, 500, 1000, 5000, 10000].forEach((n) => {
+      const opt = document.createElement("option");
+      opt.value = String(n);
+      opt.textContent = `${n}`;
+      this.maxEventsSelect.appendChild(opt);
+    });
+    this.maxEventsSelect.value = String(this.maxEvents);
+    this.maxEventsSelect.addEventListener("change", () => {
+      this.maxEvents = parseInt(this.maxEventsSelect.value, 10);
+      // Trim immediately (rather than waiting for the next pushEvent) so
+      // lowering the cap is felt right away, not just on the next message.
+      while (this.logEl.children.length > this.maxEvents) {
+        this.logEl.removeChild(this.logEl.firstChild);
+      }
+    });
+
+    this.maxEventsRow = document.createElement("div");
+    this.maxEventsRow.className = "mm-maxevents";
+    const maxEventsLabel = document.createElement("span");
+    maxEventsLabel.textContent = "Keep:";
+    this.maxEventsRow.append(maxEventsLabel, this.maxEventsSelect);
+
+    this.controlsEl = document.createElement("div");
+    this.controlsEl.className = "mm-controls";
+    this.controlsEl.append(this.buttonsEl, this.maxEventsRow);
     // Default home: same row as the filter columns. _observeWrap() moves it
     // up into the header row instead if the columns don't fit on one line.
-    this.filtersEl.appendChild(this.buttonsEl);
+    this.filtersEl.appendChild(this.controlsEl);
 
     this.logEl = document.createElement("div");
     this.logEl.className = "mm-log";
@@ -207,12 +234,13 @@ class MidiMonitor {
     this.el.append(this.headerEl, this.filtersEl, this.logEl);
   }
 
-  // Moves the Clear button up next to the title when the filter columns no
-  // longer fit on a single row (all columns share the same offsetTop when
-  // they do), keeping it right-aligned either way. ResizeObserver -- rather
-  // than a viewport media query -- since what matters is this component's
-  // own available width, not the window's, so it stays correct if reused
-  // in a narrower host layout.
+  // Moves the Pause/Clear buttons + Keep-events dropdown up next to the
+  // title when the filter columns no longer fit on a single row (all
+  // columns share the same offsetTop when they do), keeping them
+  // right-aligned either way. ResizeObserver -- rather than a viewport
+  // media query -- since what matters is this component's own available
+  // width, not the window's, so it stays correct if reused in a narrower
+  // host layout.
   _observeWrap() {
     if (typeof ResizeObserver === "undefined") return;
 
@@ -222,10 +250,10 @@ class MidiMonitor {
       const firstTop = cols[0].offsetTop;
       const wrapped = Array.from(cols).some((c) => c.offsetTop !== firstTop);
 
-      if (wrapped && this.buttonsEl.parentElement !== this.headerEl) {
-        this.headerEl.appendChild(this.buttonsEl);
-      } else if (!wrapped && this.buttonsEl.parentElement !== this.filtersEl) {
-        this.filtersEl.appendChild(this.buttonsEl);
+      if (wrapped && this.controlsEl.parentElement !== this.headerEl) {
+        this.headerEl.appendChild(this.controlsEl);
+      } else if (!wrapped && this.controlsEl.parentElement !== this.filtersEl) {
+        this.filtersEl.appendChild(this.controlsEl);
       }
     };
 
