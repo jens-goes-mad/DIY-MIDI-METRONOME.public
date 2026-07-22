@@ -9,3 +9,4 @@ both deployed together to the one GitHub Pages site via `.github/workflows/hugo.
 - [`software/midi-viewer/`](software/midi-viewer) — a standalone, dependency-free MIDI Monitor
   you can run straight in a browser via the Web MIDI API, no build step required. Served at
   `/software/midi-viewer/` on the deployed site.
+See: [https://jens-goes-mad.github.io/DIY-MIDI-METRONOME.public/overview/]
