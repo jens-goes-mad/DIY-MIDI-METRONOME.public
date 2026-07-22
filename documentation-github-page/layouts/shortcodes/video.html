@@ -1,4 +1,4 @@
-{{- $src := .Get "src" | default (.Get 0) -}}
+{{- $src := .Get "src" | default (.Get 0) | relURL -}}
 <div class="video-wrapper">
     <video
     controls

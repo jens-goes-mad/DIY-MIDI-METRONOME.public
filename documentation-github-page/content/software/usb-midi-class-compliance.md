@@ -44,6 +44,12 @@ uint8_t const desc_configuration[] = {
 };
 ```
 
+In case USB device descriptor is correct, firmware uploaded, you can verify 
+registration of ESP32S3 devices using "Audio Midi Settings" on MacOSX by clicking 
+"refresh" and be patient.
+
+{{< video src="videos/DIYMM-AMS.mp4" type="video/mp4" autoplay="true" loop="true" style="background-color: #272729" >}}
+
 ## Decoding what comes in
 
 Once enumerated, USB MIDI moves data as fixed 4-byte packets: a cable
