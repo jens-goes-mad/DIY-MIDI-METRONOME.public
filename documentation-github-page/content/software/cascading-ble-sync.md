@@ -6,7 +6,9 @@ toc: true
 Multiple standalone metronome units can stay in tempo with each other over
 Bluetooth Low Energy — no wired connection, no host, no app in the middle.
 One unit acts as the tempo source, the rest follow, and the whole thing
-runs on **broadcast**, not a normal BLE connection.
+runs on **broadcast**, not a normal BLE connection. See
+[Bluetooth on the ESP32-S3](/hardware/bluetooth) for the radio/protocol
+background this section builds on.
 
 ## Broadcast vs. connection
 

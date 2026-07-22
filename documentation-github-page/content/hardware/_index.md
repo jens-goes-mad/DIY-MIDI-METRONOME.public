@@ -28,8 +28,8 @@ with:
 - **Native USB-OTG** — a real USB device controller on-chip, not a
   UART bridged through an external USB-serial chip. Used here for
   [class-compliant USB MIDI](/software/usb-midi-class-compliance).
-- **Wi-Fi + Bluetooth LE 5** on the same silicon, no separate radio module.
-  Used here for [cascading BLE sync](/software/cascading-ble-sync).
+- **Wi-Fi + [Bluetooth LE 5](/hardware/bluetooth)** on the same silicon,
+  no separate radio module.
 - Up to 512 KB SRAM plus external PSRAM/flash headroom (model-dependent).
 - A street price in the same ballpark as an Arduino Nano.
 
@@ -74,3 +74,6 @@ this project's headline features are actually built on.
 
 - [Reference design (v0)](/hardware/reference-design) — the current circuit
   draft: power, MIDI I/O, buttons, audio click, GPIO map, and BOM.
+- [Bluetooth on the ESP32-S3](/hardware/bluetooth) — Classic vs. LE,
+  advertising vs. connections, and what the S3's BLE 5 radio specifically
+  provides.
