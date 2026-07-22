@@ -19,5 +19,7 @@ Circuit-level design notes for a standalone board around an ESP32-S3-DevKitC-1: 
 
 - [Reference design (v0)](/hardware/reference-design) — the current draft: power, MIDI I/O,
   buttons, audio click, GPIO map, and BOM.
+- [Why the ESP32-S3](/hardware/esp32s3) — what the chip brings to this project (native
+  USB-MIDI, onboard BLE) that a classic Arduino can't do without extra hardware.
 
 ---

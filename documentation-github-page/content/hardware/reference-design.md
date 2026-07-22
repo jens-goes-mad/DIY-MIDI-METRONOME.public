@@ -9,7 +9,8 @@ power in. This is meant as a starting point to drop into KiCad/Flux/etc. —
 not a fab-ready schematic. Anything marked **[verify]** should be checked
 against a datasheet or a proven reference circuit before you commit to copper.
 
-> Status: sketch, not yet built/verified.
+> Status: this draft is now being transcribed into an actual KiCad schematic/PCB —
+> still in progress, not yet built or verified against real hardware.
 
 ## 0. Base assumption
 
