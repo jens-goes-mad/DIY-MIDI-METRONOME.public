@@ -10,7 +10,7 @@
 [[social]]
 identifier = "github"
 name = "GitHub"
-url = "https://github.com/jens-goes-mad/diy-midi-metronome/"
+url = "https://github.com/jens-goes-mad/diy-midi-metronome.public/"
 [social.params]
 icon = "brand-github"
 

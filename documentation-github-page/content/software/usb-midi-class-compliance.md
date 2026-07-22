@@ -7,7 +7,7 @@ toc: true
 device as a standard MIDI port the moment it's plugged in — no driver
 install, no vendor app, no "this is actually MIDI wrapped in something
 else" translation layer. It shows up in your DAW's MIDI device list next
-to any other MIDI interface. See [why the ESP32-S3](/hardware/esp32s3)
+to any other MIDI interface. See [why the ESP32-S3](/hardware)
 for what makes that possible on this board specifically (native USB-OTG,
 which a plain Arduino doesn't have).
 
@@ -25,7 +25,7 @@ interface. The USB-IF's MIDI class spec defines that interface shape, so
 any compliant host already knows how to talk to it:
 
 ```c
-// illustrative -- trimmed from usb_descriptors.c, won't compile as shown
+// illustrative, trimmed from usb_descriptors.c
 
 #define USB_VID   0x1234u   // vendor ID
 #define USB_PID   0xABCDu   // product ID
@@ -39,7 +39,8 @@ tusb_desc_device_t const desc_device = {
 
 uint8_t const desc_configuration[] = {
     TUD_CONFIG_DESCRIPTOR(/* ... */),
-    TUD_MIDI_DESCRIPTOR(/* ... */),   // the actual "I am a MIDI device" declaration
+    // the actual "I am a MIDI device" declaration:
+    TUD_MIDI_DESCRIPTOR(/* ... */),
 };
 ```
 
@@ -51,7 +52,7 @@ effectively "what kind of MIDI message is this," so decoding is a small
 dispatch on that one nibble:
 
 ```c
-// illustrative -- trimmed from usb_midi_device.c, won't compile as shown
+// illustrative, trimmed from usb_midi_device.c
 
 // [0] cable:4 | CIN:4   [1] status   [2] data0   [3] data1
 

@@ -1,6 +1,6 @@
 # DIY-MIDI-METRONOME.public
 
-Public-facing content for the [DIY-MIDI-METRONOME](https://github.com/jens-goes-mad/diy-midi-metronome)
+Public-facing content for the [DIY-MIDI-METRONOME](https://github.com/jens-goes-mad/diy-midi-metronome.public)
 project — a cascading, BLE-synced MIDI metronome. This repo holds two independent things,
 both deployed together to the one GitHub Pages site via `.github/workflows/hugo.yml`:
 

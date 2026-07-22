@@ -23,7 +23,7 @@ so a steady stream of ticks produces smooth back-and-forth motion instead
 of a stepped one:
 
 ```c
-// illustrative -- trimmed from metronome.c, won't compile as shown
+// illustrative, trimmed from metronome.c
 
 // phase = tick_in_beat / ticks_per_beat   [0.0 .. 1.0)
 // beat_pendulum_pos = phase          if phase < 0.5   (left -> right)
@@ -56,7 +56,7 @@ something unrelated (say, a color change) at an unchanged position
 flips the tail to the wrong side for a frame:
 
 ```c
-// illustrative -- trimmed from metro_led_strip.c, won't compile as shown
+// illustrative, trimmed from metro_led_strip.c
 
 static void draw_spot(float pos)
 {

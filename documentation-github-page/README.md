@@ -1,6 +1,6 @@
 # documentation-github-page
 
-Public build-log site for the [DIY-MIDI-METRONOME](https://github.com/jens-goes-mad/diy-midi-metronome)
+Public build-log site for the [DIY-MIDI-METRONOME](https://github.com/jens-goes-mad/diy-midi-metronome.public)
 project — a cascading, BLE-synced MIDI metronome. Built with [Hugo](https://gohugo.io/) and the
 [Stack theme](https://github.com/CaiJimmy/hugo-theme-stack), deployed to GitHub Pages together
 with [`../software/midi-viewer`](../software/midi-viewer) via `../.github/workflows/hugo.yml`
