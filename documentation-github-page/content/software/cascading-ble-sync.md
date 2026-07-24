@@ -63,3 +63,82 @@ advertisement: a RECEIVER that misses one beat's broadcast just keeps
 extrapolating from the last one it got, and quietly re-anchors on the
 next successful one — rather than needing every single packet to arrive
 for the LED to stay in the right place.
+
+## Configuring non-connectable advertising
+
+As with [USB MIDI class-compliance](/software/usb-midi-class-compliance),
+the excerpts below are trimmed down from the actual firmware to show the
+shape of the approach — not the actual buildable source, no Makefiles,
+won't compile as shown. This uses NimBLE, the BLE stack ESP-IDF ships.
+
+The SENDER's whole payload is one small packed struct, sent as
+manufacturer-specific advertising data — no GATT service, no
+characteristics, because nothing ever connects to read them. Beyond the
+manufacturer/magic pair and group ID, it's just tempo, swing direction,
+and a per-beat sequence number used for dedup (more on that below):
+
+```c
+// illustrative, trimmed from metro_cascade_ble.c
+
+typedef struct __attribute__((packed)) {
+    uint16_t company_id;
+    uint8_t  magic;
+    uint8_t  group_id;
+    uint16_t bpm_x10;
+    uint8_t  beat_increasing;
+    uint8_t  beat_seq;
+} cascade_adv_payload_t;
+
+static void start_advertising(void)
+{
+    cascade_adv_payload_t payload = { /* ... */ };
+
+    struct ble_hs_adv_fields fields = {0};
+    fields.mfg_data     = (uint8_t *)&payload;
+    fields.mfg_data_len = sizeof(payload);
+    ble_gap_adv_set_fields(&fields);
+
+    // non-connectable, non-discoverable
+    struct ble_gap_adv_params adv_params = {0};
+    adv_params.conn_mode = BLE_GAP_CONN_MODE_NON;
+    adv_params.disc_mode = BLE_GAP_DISC_MODE_NON;
+    adv_params.itvl_min  = CASCADE_ADV_ITVL_MIN;
+    adv_params.itvl_max  = CASCADE_ADV_ITVL_MAX;
+
+    ble_gap_adv_start(s_own_addr_type, NULL, BLE_HS_FOREVER,
+                       &adv_params, cascade_gap_event, NULL);
+}
+```
+
+The RECEIVER side is a passive scan callback: parse the manufacturer data
+back out, filter to this project's own broadcasts, and drop repeats of a
+beat it's already seen (a legacy advertising PDU repeats on 3 channels and
+on every advertising interval, not just once per beat):
+
+```c
+// illustrative, trimmed from metro_cascade_ble.c
+
+static int cascade_gap_event(struct ble_gap_event *event, void *arg)
+{
+    if (event->type != BLE_GAP_EVENT_DISC) return 0;
+
+    struct ble_hs_adv_fields fields;
+    ble_hs_adv_parse_fields(&fields, event->disc.data,
+                             event->disc.length_data);
+
+    cascade_adv_payload_t p;
+    memcpy(&p, fields.mfg_data, sizeof(p));
+
+    if (p.company_id != CASCADE_MFG_COMPANY_ID) return 0;
+    if (p.group_id   != s_group_id)             return 0;
+
+    if (s_have_last_beat && p.beat_seq == s_last_beat_seq) {
+        return 0;  // dup
+    }
+    s_last_beat_seq = p.beat_seq;
+    s_sync_bpm      = (float)p.bpm_x10 / 10.0f;
+    s_sync_local_us = esp_timer_get_time();
+    // ...
+    return 0;
+}
+```
